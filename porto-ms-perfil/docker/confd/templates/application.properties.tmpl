@@ -1,0 +1,54 @@
+spring.profiles=infra
+
+#APPLICATION.PROPERTIES
+
+# Portal Context
+server.servlet.contextPath={{getv "/server/servlet/context/path" "/"}}
+server.port={{getv "/server/port" "8080"}}
+
+management.server.address={{getv "/management/server/address" "127.0.0.1"}}
+management.server.port={{getv "/management/server/port" "8080"}}
+management.security.enabled={{getv "/management/security/enabled" "false"}}
+management.endpoints.web.exposure.include={{getv "/management/endpoints/web/exposure/include" "*"}}
+management.health.defaults.enabled={{getv "/management/health/defaults/enable" "false"}}
+management.endpoints.web.base-path={{getv "/management/endpoints/web/base/path" "/management"}}
+
+# need the application name to facilitate the logs tracker with Sleuth
+spring.application.name={{getv "/spring/application/name" "porto-ms-perfil"}}
+
+integration.portallog.url={{getv "/integration/portallog/url" "https://porto-ms-log-tst-psg-portocom-canaisdig.ocpapp.portoseguro.brasil/logintegracao/salvar"}}
+integration.portallog.isFile={{getv "/integration/portallog/isfile" "true"}}
+
+
+# Redis
+spring.cache.type={{getv "/spring/cache/type" "redis"}}
+spring.cache.redis.time-to-live={{getv "/spring/cache/redis/time/to/live" "600000"}}
+spring.redis.database={{getv "/spring/redis/database" "0"}}
+spring.redis.host={{getv "/spring/redis/host" "redis"}}
+spring.redis.password={{getv "/spring/redis/password" "porto"}}
+spring.redis.pool.max-active={{getv "/spring/redis/pool/max" "8"}}
+spring.redis.pool.max-idle={{getv "/spring/redis/pool/max/idle" "8"}}
+spring.redis.pool.max-wait={{getv "/spring/redis/pool/max/wait" "-1"}}
+spring.redis.pool.min-idle={{getv "/spring/redis/pool/min/idle" "0"}}
+spring.redis.port={{getv "/spring/redis/port" "6379"}} 
+spring.redis.timeout={{getv "/spring/redis/timeout" "0"}}
+
+# DB connection parameters
+transacional.jpa.hibernate.ddl-auto={{getv "/transacional/jpa/hibernate/ddl/auto" "none"}}
+transacional.datasource.driver-class-name={{getv "/transacional/datasource/driver/class/name" "oracle.jdbc.OracleDriver"}}
+transacional.datasource.url={{getv "/transacional/datasource/url" "jdbc:oracle:thin:@scanpcemnnp.portoseguro.brasil:1521/pcemnnpsv"}}
+transacional.datasource.username={{getv "/transacional/datasource/username" "SOTDIGIT"}}
+transacional.datasource.password={{getv "/transacional/datasource/password" "TQ5dsRtrfD_38_JdS1Az9SEpik_772"}}
+wemclient.datasource.schema={{getv "/wemclient/datasource/username" "WEMCLIENT1"}}
+
+hibernate.show_sql=false
+hibernate.format_sql=false
+logging.level.org.hibernate.SQL=DEBUG
+hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+
+#CRON referente ao cache local
+parametros.cache={{getv "/parametros/cache" "0 0 0 */1 * *"}}
+mensagem.cache={{getv "/mensagem/cache" "0 0 0 */1 * *"}}
+
+#FLAG
+flag.header.isObrigatorio={{getv "/flag/header/isObrigatorio" "true"}}

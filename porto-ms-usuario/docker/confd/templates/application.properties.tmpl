@@ -1,0 +1,79 @@
+spring.profiles=infra
+
+#APPLICATION.PROPERTIES
+
+# Portal Context
+server.servlet.contextPath={{getv "/server/servlet/context/path" "/"}}
+server.port={{getv "/server/port" "8080"}}
+
+management.server.address={{getv "/management/server/address" "127.0.0.1"}}
+management.server.port={{getv "/management/server/port" "8080"}}
+management.security.enabled={{getv "/management/security/enabled" "false"}}
+management.endpoints.web.exposure.include={{getv "/management/endpoints/web/exposure/include" "*"}}
+management.health.defaults.enabled={{getv "/management/health/defaults/enable" "false"}}
+management.endpoints.web.base-path={{getv "/management/endpoints/web/base/path" "/management"}}
+management.endpoint.restart.enabled=true
+
+spring.application.name={{getv "/spring/application/name" "porto-ms-usuario"}}
+
+integration.portallog.url={{getv "/integration/portallog/url" "https://porto-ms-log-tst-psg-portocom-canaisdig.apps.ocpnpr.portoseguro.brasil"}}
+integration.portallog.url.v1.salvarLogIntegracao=/v1/logintegracao/salvar
+integration.portallog.isFile={{getv "/integration/portallog/isfile" "true"}}
+
+# Porto Seguro integration configurations (com.porto.portal.cliente.integration)
+
+integration.portomsproduto.url={{getv "/integration/portomsproduto/url" "https://porto-ms-produto-tst-psg-portocom-canaisdig.apps.ocpnpr.portoseguro.brasil"}}
+integration.portomsmensageria.url={{getv "/integration/portomsmensageria/url" "https://porto-ms-mensageria-hml-psg-portocom-canaisdig.apps.ocpnpr.portoseguro.brasil"}} 
+integration.portomsproduto.url.v1.produtos.consultaProdutosProspect=/v1/produtos/prospect/{cpfCnpj}
+integration.portomsproduto.url.v1.bcp.consultaPessoas=/v1/bcp/{cpfCnpj}/pessoas
+integration.portomsproduto.url.v1.investimento.consultaCotista=/v1/investimento/cotista/{cpfCnpj}
+integration.portomsmensageria.url.v1.enviaEmail=/v1/email/enviar
+integration.portomsmensageria.url.v1.enviaSms=/v1/sms/enviar
+
+# DB connection parameters
+
+transacional.jpa.hibernate.ddl-auto={{getv "/transacional/jpa/hibernate/ddl/auto" "none"}}
+transacional.datasource.driver-class-name={{getv "/transacional/datasource/driver/class/name" "oracle.jdbc.OracleDriver"}}
+transacional.datasource.url={{getv "/transacional/datasource/url" "jdbc:oracle:thin:@scanpcemnnp.portoseguro.brasil:1521/pcemnnpsv"}}
+transacional.datasource.username={{getv "/transacional/datasource/username" "SOTDIGIT"}}
+transacional.datasource.password={{getv "/transacional/datasource/password" "TQ5dsRtrfD_38_JdS1Az9SEpik_772"}}
+wemclient.datasource.schema={{getv "/wemclient/datasource/schema" "WEMCLIENT1"}}
+
+
+spring.sleuth.baggage.correlation-fields=aplicacao,codigoAutorizacao,corporativoRequestHeader
+spring.sleuth.propagation-keys=aplicacao,codigoAutorizacao,corporativoRequestHeader
+spring.sleuth.log.slf4j.whitelisted-mdc-keys=aplicacao,codigoAutorizacao,corporativoRequestHeader
+
+integration.tokenaa.parametro.client-id={{getv "/integration/tokenaa/parametro/client/id" "3a18e30b-b68c-46eb-a88b-aadd529312ca"}}
+integration.tokenaa.parametro.client-secret={{getv "/integration/tokenaa/parametro/client/secret" "235cb3c5-187f-412f-a5a0-da5f4f840103"}} 
+integration.tokenaa.parametro.grant-type={{getv "/integration/tokenaa/parametro/grant/type" "client_credentials"}}
+
+hibernate.show_sql=false
+hibernate.format_sql=false
+hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+
+# Redis
+
+spring.cache.type={{getv "/spring/cache/type" "redis"}}
+spring.cache.redis.time-to-live={{getv "/spring/cache/redis/time/to/live" "600000"}}
+spring.redis.database={{getv "/spring/redis/database" "0"}}
+spring.redis.host={{getv "/spring/redis/host" "redis"}}
+spring.redis.password={{getv "/spring/redis/password" "porto"}}
+spring.redis.pool.max-active={{getv "/spring/redis/pool/max" "8"}}
+spring.redis.pool.max-idle={{getv "/spring/redis/pool/max/idle" "8"}}
+spring.redis.pool.max-wait={{getv "/spring/redis/pool/max/wait" "-1"}}
+spring.redis.pool.min-idle={{getv "/spring/redis/pool/min/idle" "0"}}
+spring.redis.port={{getv "/spring/redis/port" "6379"}} 
+spring.redis.timeout={{getv "/spring/redis/timeout" "0"}}
+
+flag.header.isObrigatorio={{getv "/flag/header/isObrigatorio" "true"}}
+
+flag.token.aa.exibetoken.log={{getv "/flag/token/aa/exibetoken/log" "false"}}
+
+#Lexis
+
+lexis.url.sessionquery={{getv "/lexis/url/session/query" "https://h-api.online-metrix.net/api/session-query"}} 
+lexis.url.update.sessionquery={{getv "/lexis/url/update/session/query" "https://h-api.online-metrix.net/api/update"}}
+lexis.api.key={{getv "/lexis/api/key" "rpyqmmoragiyo7dc"}}
+lexis.app.desabilitado={{getv "/lexis/app/desabilitado" "2M00BcbirEnbflz1HcrC, Aplicativo Automovel, App Cartao, App Consorcio, Aplicativo Saude, App Rastreador"}}
+lexis.geral.habilitado={{getv "/lexis/geral/habilitado" "true"}}
